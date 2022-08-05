@@ -1,0 +1,26 @@
+ORG 1000H
+num1 dw 4335H
+     dw 1111H
+num2 dw 3891H
+     dw 2222H
+result dw ?
+       dw ?
+bien db ?
+mal db ?
+
+ORG 2000H
+mov ax,num1
+mov cx,num2
+mov dx,num1+2
+mov bx,num2+2
+add ax,cx
+adc dx,bx
+JO resul_mal
+mov bien, 0FFH
+jmp fin
+resul_mal: mov mal,0FFH
+fin: mov result,ax
+     mov result+2,dx
+     hlt
+END
+
